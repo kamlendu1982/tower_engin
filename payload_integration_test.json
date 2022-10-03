@@ -1,0 +1,28 @@
+{
+	"payload_survey_templates" : [{
+         "name":"TestSample",
+	 "extra_vars": {
+		 "CHECK_STATUS_ONLY": "No",
+		 "EXTEND_MONITOR_FLAG": "false",
+		 "SEARCH_DB": "CDL",
+		 "disable_from_ts": "now",
+		 "disable_type": "Hostname",
+		 "disable_until_ts": "+0:2",
+		 "run_description": "Test",
+		 "unc_file_path": "file://dc1enc3inasv5.es.oneadp.com/sitescopehpoo/Temp/foundMonitors_20210524071938.tmp"
+	 }
+	},{
+         "name":"TestSample 1",
+	 "extra_vars": {
+		 "CHECK_STATUS_ONLY": "Yes",
+		 "EXTEND_MONITOR_FLAG": "false",
+		 "SEARCH_DB": "CDL",
+		 "disable_from_ts": "now",
+		 "disable_type": "Hostname",
+		 "disable_until_ts": "+0:2",
+		 "run_description": "Test-1",
+		 "unc_file_path": "file://dc1enc3inasv5.es.oneadp.com/sitescopehpoo/Temp/foundMonitors_20210524071938.tmp"
+	 }
+	}
+	]
+}
