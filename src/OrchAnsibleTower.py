@@ -5,8 +5,8 @@
 #####################################################################################################
 
 import json
-from AnsibleTower import *
-import configuration_tower as configuration
+import src.AnsibleTower
+import src.configuration_tower as configuration
 
 ANSIBLE_TOWER_INSTANCE = configuration.ANSIBLE_TOWER_INSTANCE
 
