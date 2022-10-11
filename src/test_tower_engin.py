@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 import json
 
-import src.AnsibleTower as AnsibleTower
-import src.OrchAnsibleTower as OrchAnsibleTower
+#import src.AnsibleTower as AnsibleTower
+#import src.OrchAnsibleTower as OrchAnsibleTower
+import sys
+import configuration_tower as configuration
 
 def test():
         """
@@ -61,25 +63,9 @@ def test():
                 "scm_url": "https://github.com/ansible/test-playbooks.git"
                 }
 
-        print(json.dumps(payload_create_template, indent = 4, sort_keys=True))
+        configuration.logging.info(json.dumps(payload_create_template, indent = 4, sort_keys=True))
         mytower = AnsibleTower.AnsibleTower('https://controller.lab.example.com/')
         mytowerUtils = OrchAnsibleTower.OrchAnsibleTower()
-        #print(mytowerUtils.get_id_template('TestSample ADP'))
-        #print(mytowerUtils.run_template_by_name('TestSample ADP'))
-        #print(mytowerUtils.get_id_inventory('Dev'))
-        #print(mytowerUtils.get_id_project('SampleADP-1'))
-        #print(mytowerUtils.get_id_credential('testOps'))
-        #print(mytowerUtils.set_credential_template_by_name('testOps', 'TestSample ADP'))
-        #print(mytowerUtils.get_template_by_name('TestSample ADP'))
-        #print(mytowerUtils.run_template_by_name('TestSample ADP', params_run_template=payload_extravars_template))
-        #print(mytowerUtils.modify_job_template_by_name(payload_create_template, 'TestSample ADP'))
 
-        #print(mytower.create_project(payload_create_project))
-        print(mytower.create_job_template(payload_create_template))
-        print(mytower.modify_job_template(payload_create_template, 11))
-        #print(mytower.set_credential_template(5, 14))
-        #print(mytower.list_inventories())
-        #print(mytower.list_job_template())
-        #print(mytower.run_job_template(10))
-        #print(mytower.delete_job_template('TestSample ADP'))
-        #print(mytower.get_job_status(21))
+        configuration.logging.info(mytower.create_job_template(payload_create_template))
+        configuration.logging.info(mytower.modify_job_template(payload_create_template, 11))

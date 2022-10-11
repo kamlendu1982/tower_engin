@@ -10,7 +10,6 @@ import src.configuration_tower as configuration
 
 ANSIBLE_TOWER_INSTANCE = configuration.ANSIBLE_TOWER_INSTANCE
 
-#class UtilsAnsibleTower():
 class OrchAnsibleTower():
     def __init__(self):
         self.tower  = AnsibleTower(ANSIBLE_TOWER_INSTANCE)
@@ -71,7 +70,4 @@ class OrchAnsibleTower():
         templateid = self.get_id_template(templatename)
         return(self.tower.modify_job_template(payload, templateid))
         
-
-
-
 
