@@ -38,7 +38,7 @@ def execute_all(payload_data):
         survey_data = {}
         job_template_name = payload['name']
         survey_data["extra_vars"] = payload['extra_vars']
-        print("Executing Template " + job_template_name + "=============")
+        configuration.logging.info("Executing Template " + job_template_name + "=============")
         resp = json.loads(mytowerOrch.run_template_by_name(job_template_name, params_run_template=survey_data))
         jobid = resp['job']
         result_job = check_status_job_priodically(jobid)
@@ -49,7 +49,7 @@ def execute_all(payload_data):
 def main():
     with open(payload_file_path) as payload_file:
         payload_data = json.loads(payload_file.read())
-    print(execute_all(payload_data))
+    configuration.logging.info(execute_all(payload_data))
     payload_file.close()
 
 if __name__ == "__main__":

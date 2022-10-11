@@ -7,7 +7,6 @@
 import requests
 from requests.auth import HTTPBasicAuth
 import json
-#from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 class AnsibleTower():
@@ -15,7 +14,6 @@ class AnsibleTower():
         self.tower_username = "admin"
         self.tower_password = "redhat"
         self.url_tower      = url_tower
-        #self.url_tower      = "https://tower1.02eb.example.opentlc.com/"
         self.headers        = {'Content-Type':'application/json'}
 
     def modify_job_template(self, params_modify_template, templateid, url_string='api/v2/job_templates/'):
@@ -25,11 +23,8 @@ class AnsibleTower():
 
     def create_job_template(self, params_create_template, url_string='api/v2/job_templates/'):
         url = self.url_tower + url_string
-        print(url)
         response = requests.post(url, auth=HTTPBasicAuth(self.tower_username, self.tower_password), headers=self.headers, json=params_create_template, verify=False)
-        #response = requests.post(url, auth=HTTPBasicAuth(self.tower_username, self.tower_password), headers=self.headers, json={'name':'testT'}, verify=False)
         return response.text
-        #return params_create_template
 
     def delete_job_template(self, templateid):
         url = self.url_tower + 'api/v2/job_templates/{templateid}/'.format(templateid=templateid)

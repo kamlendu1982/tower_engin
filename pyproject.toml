@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyaap-api-tools"
+version = "0.0.1"
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version<"3.8"',
+]
+
+[tool.setuptools.packages.find]
+exclude = ["test", "tests.*"]
+
+[project.scripts]
+aap-e2e = "src.__main__:main"
