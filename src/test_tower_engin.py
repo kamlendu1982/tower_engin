@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import json
 
-#import src.AnsibleTower as AnsibleTower
-#import src.OrchAnsibleTower as OrchAnsibleTower
+import src.AnsibleTower as AnsibleTower
+import src.OrchAnsibleTower as OrchAnsibleTower
 import sys
-import configuration_tower as configuration
+import src.configuration_tower as configuration
 
 def test():
         """
@@ -64,7 +64,7 @@ def test():
                 }
 
         configuration.logging.info(json.dumps(payload_create_template, indent = 4, sort_keys=True))
-        mytower = AnsibleTower.AnsibleTower('https://controller.lab.example.com/')
+        mytower = AnsibleTower.AnsibleTower('https://controller.example.com/')
         mytowerUtils = OrchAnsibleTower.OrchAnsibleTower()
 
         configuration.logging.info(mytower.create_job_template(payload_create_template))

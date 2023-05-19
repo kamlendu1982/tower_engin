@@ -5,14 +5,14 @@
 #####################################################################################################
 
 import json
-import src.AnsibleTower
+import src.AnsibleTower as AnsibleTower
 import src.configuration_tower as configuration
 
 ANSIBLE_TOWER_INSTANCE = configuration.ANSIBLE_TOWER_INSTANCE
 
 class OrchAnsibleTower():
     def __init__(self):
-        self.tower  = AnsibleTower(ANSIBLE_TOWER_INSTANCE)
+        self.tower  = AnsibleTower.AnsibleTower(ANSIBLE_TOWER_INSTANCE)
 
     def get_id_template(self, templatename):
         list_job_templates = json.loads(self.tower.list_job_template())
