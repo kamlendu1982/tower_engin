@@ -12,7 +12,7 @@ requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.
 class AnsibleTower():
     def __init__(self, url_tower):
         self.tower_username = "admin"
-        self.tower_password = "redhat"
+        self.tower_password = "root123"
         self.url_tower      = url_tower
         self.headers        = {'Content-Type':'application/json'}
 
