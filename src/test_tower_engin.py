@@ -16,13 +16,19 @@ def test():
                 "image": "automationhub.example.com/ee-minimal-rhel8-custom",
                 "name" : "ee-minimal-rhel8-testcustom",
                 }
-        ee_id = json.loads(mytower.create_execuion_environment(payload_ee_template))["id"]
+        '''list_ee = mytower.get_execuion_environment("ee-minimal-rhel8-testcustom")
+        for ee in list_ee:
+            configuration.logging.info(ee)
+            configuration.logging.info("--------------------")'''
+        eeid = mytower.get_execuion_environment("ee-minimal-rhel8-testcustom")
+        if eeid == "NULL":
+            eeid = json.loads(mytower.create_execuion_environment(payload_ee_template))["id"]
 
         payload_create_template = {
                 "name":"TestSample ADP",
                 "description":"setup apache on Dev webservers",
                 "job_type":"run",
-                "execution_environment": ee_id,
+                "execution_environment": eeid,
                 "inventory":1,
                 "credentials":2,
                 "project":8,
