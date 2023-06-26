@@ -16,6 +16,11 @@ class AnsibleTower():
         self.url_tower      = url_tower
         self.headers        = {'Content-Type':'application/json'}
 
+    def create_execuion_environment(self, payload_ee_template, url_string='api/v2/execution_environments/'):
+        url = self.url_tower + url_string
+        response = requests.post(url, auth=HTTPBasicAuth(self.tower_username, self.tower_password), headers=self.headers, json=payload_ee_template, verify=False)
+        return response.text
+
     def modify_job_template(self, params_modify_template, templateid, url_string='api/v2/job_templates/'):
         url = self.url_tower + url_string + str(templateid) + '/'
         response = requests.patch(url, auth=HTTPBasicAuth(self.tower_username, self.tower_password), headers=self.headers, json=params_modify_template, verify=False)

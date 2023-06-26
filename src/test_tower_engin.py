@@ -7,13 +7,22 @@ import sys
 import src.configuration_tower as configuration
 
 def test():
+        mytower = AnsibleTower.AnsibleTower('https://controller.example.com/')
+        mytowerUtils = OrchAnsibleTower.OrchAnsibleTower()
         """
         Runs an End-to-End test against an Ansible Automation Controller instance
         """
+        payload_ee_template = {
+                "image": "automationhub.example.com/ee-minimal-rhel8-custom",
+                "name" : "ee-minimal-rhel8-testcustom",
+                }
+        ee_id = json.loads(mytower.create_execuion_environment(payload_ee_template))["id"]
+
         payload_create_template = {
                 "name":"TestSample ADP",
                 "description":"setup apache on Dev webservers",
                 "job_type":"run",
+                "execution_environment": ee_id,
                 "inventory":1,
                 "credentials":2,
                 "project":8,
@@ -64,8 +73,7 @@ def test():
                 }
 
         configuration.logging.info(json.dumps(payload_create_template, indent = 4, sort_keys=True))
-        mytower = AnsibleTower.AnsibleTower('https://controller.example.com/')
-        mytowerUtils = OrchAnsibleTower.OrchAnsibleTower()
 
+        configuration.logging.info(mytower.create_execuion_environment(payload_ee_template))
         configuration.logging.info(mytower.create_job_template(payload_create_template))
-        configuration.logging.info(mytower.modify_job_template(payload_create_template, 11))
+        configuration.logging.info(mytower.modify_job_template(payload_create_template, 9))
