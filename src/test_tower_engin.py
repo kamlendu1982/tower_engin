@@ -16,10 +16,6 @@ def test():
                 "image": "automationhub.example.com/ee-minimal-rhel8-custom",
                 "name" : "ee-minimal-rhel8-testcustom",
                 }
-        '''list_ee = mytower.get_execuion_environment("ee-minimal-rhel8-testcustom")
-        for ee in list_ee:
-            configuration.logging.info(ee)
-            configuration.logging.info("--------------------")'''
         eeid = mytower.get_execuion_environment("ee-minimal-rhel8-testcustom")
         if eeid == "NULL":
             eeid = json.loads(mytower.create_execuion_environment(payload_ee_template))["id"]
