@@ -10,8 +10,8 @@ ExecuteIntegration.py: Executes jobs in json payload
 ## How run?
 
 ```bash
-python3 -m venv venv
+python3.9 -m venv venv
 source venv/bin/activate
-python3 -m pip install -e . # editable mode
+python3.9 -m pip install -e . # editable mode
 aap-e2e # runs the `test_tower_engin` application
 ```

@@ -21,6 +21,17 @@ class AnsibleTower():
         response = requests.post(url, auth=HTTPBasicAuth(self.tower_username, self.tower_password), headers=self.headers, json=payload_ee_template, verify=False)
         return response.text
 
+    def get_execuion_environment(self, ee_name, url_string='api/v2/execution_environments/'):
+        url = self.url_tower + url_string
+        response = requests.get(url, auth=HTTPBasicAuth(self.tower_username, self.tower_password), headers=self.headers, verify=False)
+        for ee in json.loads(response.text)["results"]:
+            for attr in ee:
+                id = ee["id"]
+                if ee["name"] == ee_name:
+                    return id
+        return "NULL"
+        #return json.loads(response.text)["results"]
+
     def modify_job_template(self, params_modify_template, templateid, url_string='api/v2/job_templates/'):
         url = self.url_tower + url_string + str(templateid) + '/'
         response = requests.patch(url, auth=HTTPBasicAuth(self.tower_username, self.tower_password), headers=self.headers, json=params_modify_template, verify=False)
